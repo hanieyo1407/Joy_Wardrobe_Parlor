@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1407Clothing Store</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #0a0a0a;
+        color: #fff;
+      }
+
+      header {
+        background-color: #1a1a1a;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 2px solid #bb86fc; /* Purple border */
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: #bb86fc; /* Purple */
+        font-weight: 600; /* Semi-bold */
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: #03dac6; /* Teal */
+        text-decoration: none;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 20px; /* Rounded borders for nav links */
+        transition: background-color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        background-color: #03dac6; /* Teal */
+        color: #000;
+      }
+
+      /* Hero Section with Animated Gradient */
+      #home {
+        height: 100vh; /* Full viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: linear-gradient(135deg, #6200ee, #bb86fc, #03dac6, #3700b3);
+        background-size: 400% 400%; /* Larger background size for smooth animation */
+        animation: gradientAnimation 10s ease infinite; /* Animation */
+        border-radius: 0 0 50px 50px; /* Curved bottom edges */
+        overflow: hidden; /* Ensures the border-radius works */
+      }
+
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .hero h2 {
+        font-size: 3rem;
+        margin: 0;
+        color: #fff;
+        animation: fadeIn 2s ease-in-out;
+        font-weight: 600; /* Semi-bold */
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin: 20px 0;
+        color: #fff;
+        animation: fadeIn 3s ease-in-out;
+      }
+
+      .hero .btn {
+        background-color: #03dac6;
+        color: #000;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 30px; /* Rounded borders for button */
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        animation: fadeIn 4s ease-in-out;
+      }
+
+      .hero .btn:hover {
+        background-color: #018786;
+        transform: scale(1.05); /* Slight zoom effect on hover */
+      }
+
+      /* Fade-in animation for text */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Product Grid */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .product-card {
+        background-color: #1a1a1a;
+        border-radius: 20px; /* Rounded borders for product cards */
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 20px 20px 0 0; /* Rounded top corners for images */
+      }
+
+      .product-info {
+        padding: 15px;
+      }
+
+      .product-info h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 600; /* Semi-bold */
+      }
+
+      .product-info p {
+        margin: 5px 0;
+        color: #bb86fc; /* Purple */
+      }
+
+      /* Contact Section */
+      #contact {
+        background-color: #1a1a1a;
+        padding: 50px 20px;
+        text-align: center;
+        border-radius: 50px 50px 0 0; /* Curved top edges */
+      }
+
+      .contact-links a {
+        color: #03dac6; /* Teal */
+        margin: 0 10px;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 20px; /* Rounded borders for contact links */
+        transition: background-color 0.3s ease;
+      }
+
+      .contact-links a:hover {
+        background-color: #03dac6; /* Teal */
+        color: #000;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1a1a1a;
+        padding: 20px;
+        text-align: center;
+        color: #bb86fc; /* Purple */
+        border-top: 2px solid #bb86fc; /* Purple border */
+      }
+      /* General Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #0a0a0a;
+        color: #fff;
+      }
+
+      header {
+        background-color: #1a1a1a;
+        padding: 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: #bb86fc; /* Purple */
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: #03dac6; /* Teal */
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .hero {
+        background: linear-gradient(
+          135deg,
+          #3700b3,
+          #6200ee
+        ); /* Purple gradient */
+        padding: 100px 20px;
+        text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+        margin: 0;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin: 10px 0 20px;
+      }
+
+      .btn {
+        background-color: #03dac6; /* Teal */
+        color: #000;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      #shop {
+        padding: 50px 20px;
+        text-align: center;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .product-card {
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: scale(1.05);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .product-info {
+        padding: 15px;
+      }
+
+      .product-info h3 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      .product-info p {
+        margin: 5px 0;
+        color: #bb86fc; /* Purple */
+      }
+
+      #contact {
+        background-color: #1a1a1a;
+        padding: 50px 20px;
+        text-align: center;
+      }
+
+      .contact-links a {
+        color: #03dac6; /* Teal */
+        margin: 0 10px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      footer {
+        background-color: #1a1a1a;
+        padding: 20px;
+        text-align: center;
+        color: #bb86fc; /* Purple */
+      }
+
+      /* Hero Section with Animated Gradient */
+      #home {
+        height: 100vh; /* Full viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: linear-gradient(135deg, #6200ee, #bb86fc, #03dac6, #3700b3);
+        background-size: 400% 400%; /* Larger background size for smooth animation */
+        animation: gradientAnimation 10s ease infinite; /* Animation */
+      }
+
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .hero h2 {
+        font-size: 3rem;
+        margin: 0;
+        color: #fff;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin: 20px 0;
+        color: #fff;
+        animation: fadeIn 3s ease-in-out;
+      }
+
+      .hero .btn {
+        background-color: #03dac6;
+        color: #000;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease;
+        animation: fadeIn 4s ease-in-out;
+      }
+
+      .hero .btn:hover {
+        background-color: #018786;
+      }
+
+      /* Fade-in animation for text */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>1407CLOTHING</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="home">
+      <div class="hero">
+        <h2>Welcome to the 1407 Ultimate Clothing Experience</h2>
+        <p>Explore our latest collection of trendy clothes.</p>
+        <a href="#shop" class="btn">Shop Now</a>
+      </div>
+    </section>
+
+    <section id="shop">
+      <h2>Our Collection</h2>
+      <div class="product-grid" id="product-grid">
+        <!-- I will be adding my products dynamically in my Js code -->
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-links">
+        <a
+          href="ttps://www.tiktok.com/@joymwase?_t=ZM-8u2tEDrB1Zl&_r=1"
+          target="_blank"
+          >TikTok</a
+        >
+        <a href="https://www.facebook.com/joyce.mwase.1" target="_blank"
+          >Facebook</a
+        >
+        <a href="https://chat.whatsapp.com/CNEucXwrEdM4RROozJLSfl">whatsapp</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 1407CLOTHING. All rights reserved.</p>
+    </footer>
+
+    <script>
+      //product data
+      const products = [
+        {
+          name: "Red BlackFlower dress",
+          image1: "Red-Flowered short front.jpg",
+          image2: "Red-Flowered short back.jpg",
+          price: "MWK10,000",
+          sizes: ["M"],
+          quantity: 0,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "Black BareBack short dress",
+          image1: "Black-bare mini front.jpg",
+          image2: "Blackbare mini back.jpg",
+          price: "MWK12,000",
+          sizes: ["M"],
+          quantity: 1,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "Black BareBack long dress",
+          image1: "Black-Bare tall front.jpg",
+          image2: "Black-Bare tall.jpg",
+          price: "MWK22,000",
+          sizes: ["M"],
+          quantity: 0,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "White Short dress",
+          image1: "White-Mini front.jpg",
+          image2: "White-Mini back.jpg",
+          price: "MWK10,000",
+          sizes: ["M"],
+          quantity: 1,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "Short Blue Dinner Dress",
+          image1: "Blue Mini.jpg",
+          image2: "Blue Mini.jpg",
+          price: "MWK10,000",
+          sizes: ["M"],
+          quantity: 1,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "Short Casual White Dress",
+          image1: "Pure-White mini.jpg",
+          image2: "Pure-White mini.jpg",
+          price: "MWK9,000",
+          sizes: ["M"],
+          quantity: 1,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "Short RedWhite Checkered dress",
+          image1: "Checkered Short.jpg",
+          image2: "Checkered Short.jpg",
+          price: "MWK9,000",
+          sizes: ["M"],
+          quantity: 1,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "Short Flaired Tiger Dress",
+          image1: "Tiggered Short flair.jpg",
+          image2: "Tiggered Short flair.jpg",
+          price: "MWK15,000",
+          sizes: ["M"],
+          quantity: 1,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "Shinny Yellow Short dress",
+          image1: "Shine-Yellow short.jpg",
+          image2: "Shine-Yellow short.jpg",
+          price: "MWK7,000",
+          sizes: ["M"],
+          quantity: 1,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "Pale Pink Dinner Dress",
+          image1: "Pale-pink dinner.jpg",
+          image2: "Pale-pink dinner.jpg",
+          price: "MWK12,000",
+          sizes: ["M"],
+          quantity: 1,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "Shine Black Short Dress",
+          image1: "Shine-Black mini.jpg",
+          image2: "Shine-Black mini.jpg",
+          price: "MWK12,000",
+          sizes: ["M"],
+          quantity: 1,
+          location: "Blantyre, CI",
+        },
+        {
+          name: "Peppered Blue Dinner dress",
+          image1: "Peppered-blue short front.jpg",
+          image2: "Peppered-blue short front.jpg",
+          price: "MWK12,000",
+          sizes: ["M"],
+          quantity: 1,
+          location: "Blantyre, CI",
+        },
+      ];
+
+      function displayProducts() {
+        const productGrid = document.getElementById("product-grid");
+        productGrid.innerHTML = "";
+
+        products.forEach((product) => {
+          const productCard = document.createElement("div");
+          productCard.classList.add("product-card");
+
+          // Image container
+          const imageContainer = document.createElement("div");
+          imageContainer.classList.add("image-container");
+
+          // Front image
+          const image1 = document.createElement("img");
+          image1.src = product.image1;
+          image1.alt = `${product.name} - Front`;
+          image1.classList.add("product-image", "active");
+
+          // Back image
+          const image2 = document.createElement("img");
+          image2.src = product.image2;
+          image2.alt = `${product.name} - Back`;
+          image2.classList.add("product-image");
+
+          // Toggle button
+          const toggleButton = document.createElement("button");
+          toggleButton.textContent = "View Back";
+          toggleButton.classList.add("toggle-button");
+
+          // Append images and button to the container
+          imageContainer.appendChild(image1);
+          imageContainer.appendChild(image2);
+          imageContainer.appendChild(toggleButton);
+
+          // Product info
+          const productInfo = document.createElement("div");
+          productInfo.classList.add("product-info");
+
+          const productName = document.createElement("h3");
+          productName.textContent = product.name;
+
+          const productPrice = document.createElement("p");
+          productPrice.textContent = `Price: ${product.price}`;
+
+          const productSizes = document.createElement("p");
+          productSizes.textContent = `Sizes: ${product.sizes.join(", ")}`;
+
+          const productQuantity = document.createElement("p");
+          productQuantity.textContent = `Quantity: ${product.quantity}`;
+
+          const productLocation = document.createElement("p");
+          productLocation.textContent = `Location: ${product.location}`;
+
+          productInfo.appendChild(productName);
+          productInfo.appendChild(productPrice);
+          productInfo.appendChild(productSizes);
+          productInfo.appendChild(productQuantity);
+          productInfo.appendChild(productLocation);
+
+          // Append image container and product info to the card
+          productCard.appendChild(imageContainer);
+          productCard.appendChild(productInfo);
+
+          // Add the product card to the grid
+          productGrid.appendChild(productCard);
+
+          // Toggle functionality
+          toggleButton.addEventListener("click", () => {
+            image1.classList.toggle("active");
+            image2.classList.toggle("active");
+            toggleButton.textContent = image1.classList.contains("active")
+              ? "View Back"
+              : "View Front";
+          });
+        });
+      }
+
+      window.onload = displayProducts;
+    </script>
+  </body>
+</html>
