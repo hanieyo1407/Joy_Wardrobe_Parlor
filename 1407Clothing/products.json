@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Red BlackFlower Dress",
+    "image1": "Red-Flowered short front.jpg",
+    "image2": "Red-Flowered short back.jpg",
+    "price": "MWK 10,000",
+    "details": "A beautiful and vibrant floral dress, perfect for sunny days. Lightweight fabric with a flattering cut."
+  },
+  {
+    "name": "Black BareBack Short Dress",
+    "image1": "Black-bare mini front.jpg",
+    "image2": "Blackbare mini back.jpg",
+    "price": "MWK 12,000",
+    "details": "A stunning and bold mini dress with an open back design. Perfect for evening events."
+  },
+  {
+    "name": "Black BareBack Long Dress",
+    "image1": "Black-Bare tall front.jpg",
+    "image2": "Black-Bare tall.jpg",
+    "price": "MWK 22,000",
+    "details": "Elegant and sophisticated. This long dress features a dramatic open back for a memorable look."
+  },
+  {
+    "name": "White Short Dress",
+    "image1": "White-Mini front.jpg",
+    "image2": "White-Mini back.jpg",
+    "price": "MWK 10,000",
+    "details": "A classic and chic white mini dress. Versatile for both casual and semi-formal occasions."
+  }
+]

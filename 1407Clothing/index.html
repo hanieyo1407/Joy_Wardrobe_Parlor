@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1407 Clothing | Professional & Modern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="site-header">
+      <div class="container">
+        <a href="#home" class="logo">1407CLOTHING</a>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content animate-on-scroll">
+                <h1 class="hero-title">Style Redefined. Confidence Delivered.</h1>
+                <p class="hero-subtitle">Discover exclusive collections designed for the modern trendsetter.</p>
+                <a href="#shop" class="btn btn-primary">Explore Collection</a>
+            </div>
+        </section>
+
+        <section id="shop" class="shop-section">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Our Collection</h2>
+                <div class="product-grid" id="product-grid">
+                    <!-- Skeleton loaders will be injected here first -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container animate-on-scroll">
+                <h2 class="section-title">Get In Touch</h2>
+                <p>Follow us on social media or send us a message!</p>
+                <div class="social-links">
+                    <a href="https://www.tiktok.com/@joymwase?_t=ZM-8u2tEDrB1Zl&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/joyce.mwase.1" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://chat.whatsapp.com/CNEucXwrEdM4RROozJLSfl" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer-bottom">
+        <div class="container">
+            <p>© 2025 1407CLOTHING. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Product Modal Structure (hidden by default) -->
+    <div class="modal-overlay" id="product-modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn" aria-label="Close modal">×</button>
+            <div class="modal-body" id="modal-body-content">
+                <!-- Modal content will be injected here by script.js -->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

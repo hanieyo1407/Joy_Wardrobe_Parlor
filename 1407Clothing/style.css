@@ -1,0 +1,86 @@
+/* --- Root Variables for Easy Themeing --- */
+:root {
+  --bg-color: #121212;
+  --surface-color: #1e1e1e;
+  --primary-color: #d4af37; /* A sophisticated gold/amber */
+  --primary-hover: #e7c564;
+  --text-color: #e0e0e0;
+  --heading-color: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --font-body: 'Poppins', sans-serif;
+  --border-radius: 8px;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- General & Reset Styles --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
+.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 700; }
+
+/* --- Buttons --- */
+.btn { display: inline-block; padding: 12px 28px; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+.btn-primary { background-color: var(--primary-color); color: #000; }
+.btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3); }
+
+/* --- Header --- */
+.site-header { background-color: rgba(30, 30, 30, 0.8); backdrop-filter: blur(10px); padding: 15px 0; position: sticky; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border-color); }
+.site-header .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--heading-color); text-decoration: none; }
+.main-nav ul { list-style: none; display: flex; gap: 30px; }
+.main-nav a { color: var(--text-color); text-decoration: none; font-weight: 400; position: relative; padding: 5px 0; }
+.main-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: width 0.3s ease; }
+.main-nav a:hover::after { width: 100%; }
+
+/* --- Hero Section --- */
+.hero-section { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 20px; background-image: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=2071&auto=format&fit=crop'); background-size: 110%; background-position: center; animation: kenburns 20s ease-out infinite; }
+.hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+.hero-subtitle { font-size: 1.2rem; font-weight: 300; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+@keyframes kenburns { 0% { background-size: 100%; } 100% { background-size: 110%; } }
+
+/* --- Shop Section --- */
+.shop-section { padding: 80px 0; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.product-card { background-color: var(--surface-color); border-radius: var(--border-radius); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+.product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.product-card img { width: 100%; height: 350px; object-fit: cover; }
+.product-info { padding: 20px; }
+.product-info h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--heading-color); }
+.product-price { color: var(--primary-color); font-weight: 600; font-size: 1.1rem; }
+
+/* --- Skeleton Loader --- */
+.skeleton { background-color: #2a2a2a; position: relative; overflow: hidden; }
+.skeleton::after { content: ''; position: absolute; top: 0; left: -150%; width: 150%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent); animation: shimmer 1.5s infinite; }
+@keyframes shimmer { 100% { left: 150%; } }
+.skeleton-img { height: 350px; }
+.skeleton-text { height: 20px; margin-bottom: 10px; border-radius: 4px; }
+.skeleton-price { height: 18px; width: 50%; border-radius: 4px; }
+
+/* --- Product Modal --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-content { background-color: var(--surface-color); padding: 30px; border-radius: var(--border-radius); width: 90%; max-width: 800px; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
+.modal-overlay.active .modal-content { transform: scale(1); }
+.modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--text-color); font-size: 2rem; cursor: pointer; }
+.modal-body { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.modal-images { display: flex; flex-direction: column; align-items: center; }
+.modal-main-image { width: 100%; height: 400px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 15px; }
+.modal-thumbnail-group { display: flex; gap: 10px; }
+.modal-thumbnail { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s; }
+.modal-thumbnail.active { border-color: var(--primary-color); }
+.modal-details h2 { font-size: 2rem; margin-bottom: 15px; }
+.modal-details .product-price { font-size: 1.5rem; margin-bottom: 20px; }
+.modal-details p { margin-bottom: 30px; }
+
+/* --- Contact & Footer --- */
+.contact-section { background-color: var(--surface-color); padding: 60px 0; text-align: center; }
+.social-links { display: flex; justify-content: center; gap: 25px; }
+.social-links a { color: var(--text-color); font-size: 1.8rem; transition: all 0.3s ease; }
+.social-links a:hover { color: var(--primary-color); transform: translateY(-5px); }
+.site-footer-bottom { padding: 20px 0; text-align: center; font-size: 0.9rem; border-top: 1px solid var(--border-color); }
+
+/* --- Scroll Animations --- */
+.animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
