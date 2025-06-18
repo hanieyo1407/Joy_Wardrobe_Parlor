@@ -5,10 +5,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalOverlay = document.getElementById('product-modal-overlay');
     const modalBody = document.getElementById('modal-body-content');
     const closeModalBtn = document.getElementById('modal-close-btn');
+    const customCursor = document.querySelector('.custom-cursor');
+    const magneticBtn = document.querySelector('.magnetic-btn');
+
+    // --- CURSOR & MAGNETIC LOGIC ---
+    if (window.matchMedia("(pointer: fine)").matches) {
+        window.addEventListener('mousemove', e => {
+            customCursor.style.top = `${e.clientY}px`;
+            customCursor.style.left = `${e.clientX}px`;
+        });
+
+        const interactiveElements = document.querySelectorAll('a, button, .product-card, .modal-thumbnail');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => customCursor.classList.add('grow'));
+            el.addEventListener('mouseleave', () => customCursor.classList.remove('grow'));
+        });
+
+        if (magneticBtn) {
+            magneticBtn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                this.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+            });
+            magneticBtn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translate(0, 0)';
+            });
+        }
+    }
 
     // --- FUNCTIONS ---
-
-    // Function to render skeleton loaders
     function renderSkeletons() {
         let skeletonsHTML = '';
         for (let i = 0; i < 8; i++) {
@@ -25,21 +51,21 @@ document.addEventListener('DOMContentLoaded', () => {
         productGrid.innerHTML = skeletonsHTML;
     }
 
-    // Function to fetch and display products
     async function displayProducts() {
         try {
             const response = await fetch('products.json');
             if (!response.ok) throw new Error('Network response was not ok');
             const products = await response.json();
 
-            // Short delay to showcase the skeleton loader
             setTimeout(() => {
-                productGrid.innerHTML = ''; // Clear skeletons
+                productGrid.innerHTML = '';
                 products.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.className = 'product-card animate-on-scroll';
                     productCard.innerHTML = `
-                        <img src="${product.image1}" alt="${product.name}">
+                        <div class="product-card-image-wrapper">
+                            <img src="${product.image1}" alt="${product.name}">
+                        </div>
                         <div class="product-info">
                             <h3>${product.name}</h3>
                             <p class="product-price">${product.price}</p>
@@ -48,9 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     productCard.addEventListener('click', () => openModal(product));
                     productGrid.appendChild(productCard);
                 });
-                // After adding new cards, re-observe them for animation
                 setupScrollObserver();
-            }, 500); // 0.5 second delay
+            }, 500);
 
         } catch (error) {
             console.error('Fetch error:', error);
@@ -58,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Function to open the product modal
     function openModal(product) {
         modalBody.innerHTML = `
             <div class="modal-images">
@@ -76,22 +100,19 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scroll
+        document.body.style.overflow = 'hidden';
 
-        // Add event listeners for new modal content
         const thumbnails = modalBody.querySelectorAll('.modal-thumbnail');
         thumbnails.forEach(thumb => {
             thumb.addEventListener('click', (e) => switchModalImage(e, thumbnails));
         });
     }
     
-    // Function to close the modal
     function closeModal() {
         modalOverlay.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Function to switch images inside the modal
     function switchModalImage(e, thumbnails) {
         const mainImage = document.getElementById('modal-main-img');
         mainImage.src = e.target.dataset.src;
@@ -99,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.target.classList.add('active');
     }
     
-    // Function for scroll-triggered animations
     function setupScrollObserver() {
         const animatedElements = document.querySelectorAll('.animate-on-scroll');
         const observer = new IntersectionObserver((entries) => {
@@ -114,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animatedElements.forEach(el => observer.observe(el));
     }
 
-
     // --- EVENT LISTENERS ---
     closeModalBtn.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', (e) => {
@@ -126,10 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
     // --- INITIALIZATION ---
     renderSkeletons();
     displayProducts();
     setupScrollObserver();
-
 });

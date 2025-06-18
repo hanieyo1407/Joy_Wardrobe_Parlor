@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1407 Clothing | Professional & Modern</title>
+    <title>1407 Clothing | A Premium Experience</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -13,12 +13,16 @@
 </head>
 <body>
 
+    <!-- CUSTOM CURSOR ELEMENT -->
+    <div class="custom-cursor"></div>
+
     <header class="site-header">
       <div class="container">
         <a href="#home" class="logo">1407CLOTHING</a>
         <nav class="main-nav">
           <ul>
             <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#shop">Shop</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -28,10 +32,31 @@
 
     <main>
         <section id="home" class="hero-section">
+            <!-- VIDEO BACKGROUND - NOW USING LOCAL FILE -->
+            <video src="assets/hero-video.mp4" 
+                   class="hero-video" autoplay loop muted playsinline></video>
+            <div class="video-overlay"></div>
             <div class="hero-content animate-on-scroll">
                 <h1 class="hero-title">Style Redefined. Confidence Delivered.</h1>
                 <p class="hero-subtitle">Discover exclusive collections designed for the modern trendsetter.</p>
-                <a href="#shop" class="btn btn-primary">Explore Collection</a>
+                <a href="#shop" class="btn btn-primary magnetic-btn">Explore Collection</a>
+            </div>
+        </section>
+
+        <!-- NEW ABOUT/STORY SECTION -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="split-layout">
+                    <div class="split-layout-image animate-on-scroll">
+                        <!-- ABOUT IMAGE - NOW USING LOCAL FILE -->
+                        <img src="assets/about-image.jpg" alt="Fashion designer workspace">
+                    </div>
+                    <div class="split-layout-content animate-on-scroll">
+                        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Our Vision</h2>
+                        <p>At 1407CLOTHING, we believe fashion is more than just fabric. It's a form of self-expression, a suit of armor, and a declaration of identity. Founded on the principles of quality craftsmanship and timeless design, each piece is created to empower and inspire.</p>
+                        <p>We are dedicated to sustainable practices and creating pieces you'll love for years to come.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -39,7 +64,7 @@
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Our Collection</h2>
                 <div class="product-grid" id="product-grid">
-                    <!-- Skeleton loaders will be injected here first -->
+                    <!-- Skeletons & Products Here -->
                 </div>
             </div>
         </section>
