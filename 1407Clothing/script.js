@@ -1,12 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- STATE & SELECTORS ---
-    const productGrid = document.getElementById('product-grid');
+    const preloader = document.getElementById('preloader');
+    const backToTopBtn = document.getElementById('back-to-top');
+    const navLinks = document.querySelectorAll('.main-nav a');
+    const sections = document.querySelectorAll('main section, .marquee');
+    const productContainer = document.getElementById('product-container');
     const modalOverlay = document.getElementById('product-modal-overlay');
     const modalBody = document.getElementById('modal-body-content');
     const closeModalBtn = document.getElementById('modal-close-btn');
     const customCursor = document.querySelector('.custom-cursor');
     const magneticBtn = document.querySelector('.magnetic-btn');
+
+    // --- PRELOADER LOGIC ---
+    document.body.classList.add('loading');
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            if (preloader) {
+                preloader.classList.add('hidden');
+                document.body.classList.remove('loading');
+            }
+        }, 300); // Small delay to ensure smooth transition
+    });
+
+    // --- SCROLL-BASED LOGIC (NAV HIGHLIGHT & BACK TO TOP) ---
+    const handleScroll = () => {
+        const scrollY = window.scrollY;
+
+        // Back to Top Button visibility
+        if (backToTopBtn) {
+            if (scrollY > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        }
+
+        // Active Nav Link highlighting
+        let currentSectionId = '';
+        sections.forEach(section => {
+            if (section.id) { // Ensure the section has an ID
+                const sectionTop = section.offsetTop - 150; // Offset for better accuracy
+                if (scrollY >= sectionTop) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const linkHref = link.getAttribute('href');
+            if (linkHref && linkHref.substring(1) === currentSectionId) {
+                link.classList.add('active');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', handleScroll);
 
     // --- CURSOR & MAGNETIC LOGIC ---
     if (window.matchMedia("(pointer: fine)").matches) {
@@ -34,55 +84,67 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- FUNCTIONS ---
-    function renderSkeletons() {
-        let skeletonsHTML = '';
-        for (let i = 0; i < 8; i++) {
-            skeletonsHTML += `
-                <div class="product-card">
-                    <div class="skeleton skeleton-img"></div>
-                    <div class="product-info">
-                        <div class="skeleton skeleton-text"></div>
-                        <div class="skeleton skeleton-price"></div>
-                    </div>
-                </div>
-            `;
-        }
-        productGrid.innerHTML = skeletonsHTML;
+    // --- DRAG-TO-SCROLL LOGIC ---
+    if (productContainer) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        productContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            productContainer.style.cursor = 'grabbing';
+            startX = e.pageX - productContainer.offsetLeft;
+            scrollLeft = productContainer.scrollLeft;
+        });
+        productContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            productContainer.style.cursor = 'grab';
+        });
+        productContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            productContainer.style.cursor = 'grab';
+        });
+        productContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - productContainer.offsetLeft;
+            const walk = (x - startX) * 2; // The *2 makes it scroll faster
+            productContainer.scrollLeft = scrollLeft - walk;
+        });
     }
 
+    // --- DATA & DISPLAY FUNCTIONS ---
     async function displayProducts() {
         try {
             const response = await fetch('products.json');
             if (!response.ok) throw new Error('Network response was not ok');
             const products = await response.json();
-
-            setTimeout(() => {
-                productGrid.innerHTML = '';
-                products.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.className = 'product-card animate-on-scroll';
-                    productCard.innerHTML = `
-                        <div class="product-card-image-wrapper">
-                            <img src="${product.image1}" alt="${product.name}">
-                        </div>
-                        <div class="product-info">
-                            <h3>${product.name}</h3>
-                            <p class="product-price">${product.price}</p>
-                        </div>
-                    `;
-                    productCard.addEventListener('click', () => openModal(product));
-                    productGrid.appendChild(productCard);
-                });
-                setupScrollObserver();
-            }, 500);
+            
+            productContainer.innerHTML = '';
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card animate-on-scroll';
+                productCard.innerHTML = `
+                    <div class="product-card-image-wrapper">
+                        <img src="${product.image1}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p class="product-price">${product.price}</p>
+                    </div>
+                `;
+                productCard.addEventListener('click', () => openModal(product));
+                productContainer.appendChild(productCard);
+            });
+            setupScrollObserver();
 
         } catch (error) {
             console.error('Fetch error:', error);
-            productGrid.innerHTML = '<p class="error-message">Failed to load products. Please try again later.</p>';
+            productContainer.innerHTML = '<p class="error-message">Failed to load products. Please try again later.</p>';
         }
     }
 
+    // --- MODAL & OBSERVER FUNCTIONS ---
     function openModal(product) {
         modalBody.innerHTML = `
             <div class="modal-images">
@@ -146,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- INITIALIZATION ---
-    renderSkeletons();
     displayProducts();
     setupScrollObserver();
+    handleScroll(); // Run once on load to set initial state
 });

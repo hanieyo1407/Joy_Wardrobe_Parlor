@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1407 Clothing | A Premium Experience</title>
+    <title>1407 Clothing | The Pro Polish</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -13,7 +13,11 @@
 </head>
 <body>
 
-    <!-- CUSTOM CURSOR ELEMENT -->
+    <!-- FEATURE 1: PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="spinner"></div>
+    </div>
+
     <div class="custom-cursor"></div>
 
     <header class="site-header">
@@ -32,9 +36,7 @@
 
     <main>
         <section id="home" class="hero-section">
-            <!-- VIDEO BACKGROUND - NOW USING LOCAL FILE -->
-            <video src="assets/hero-video.mp4" 
-                   class="hero-video" autoplay loop muted playsinline></video>
+            <video src="assets/hero-video.mp4" class="hero-video" autoplay loop muted playsinline></video>
             <div class="video-overlay"></div>
             <div class="hero-content animate-on-scroll">
                 <h1 class="hero-title">Style Redefined. Confidence Delivered.</h1>
@@ -43,29 +45,41 @@
             </div>
         </section>
 
-        <!-- NEW ABOUT/STORY SECTION -->
         <section id="about" class="about-section">
             <div class="container">
                 <div class="split-layout">
                     <div class="split-layout-image animate-on-scroll">
-                        <!-- ABOUT IMAGE - NOW USING LOCAL FILE -->
                         <img src="assets/about-image.jpg" alt="Fashion designer workspace">
                     </div>
                     <div class="split-layout-content animate-on-scroll">
                         <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Our Vision</h2>
                         <p>At 1407CLOTHING, we believe fashion is more than just fabric. It's a form of self-expression, a suit of armor, and a declaration of identity. Founded on the principles of quality craftsmanship and timeless design, each piece is created to empower and inspire.</p>
-                        <p>We are dedicated to sustainable practices and creating pieces you'll love for years to come.</p>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>TIMELESS DESIGNS</span> <span class="star-separator">✦</span>
+                <span>LIMITED EDITION</span> <span class="star-separator">✦</span>
+                <span>PREMIUM QUALITY</span> <span class="star-separator">✦</span>
+                <span>SHOP THE COLLECTION</span> <span class="star-separator">✦</span>
+                <!-- Duplicate for seamless loop -->
+                <span>TIMELESS DESIGNS</span> <span class="star-separator">✦</span>
+                <span>LIMITED EDITION</span> <span class="star-separator">✦</span>
+                <span>PREMIUM QUALITY</span> <span class="star-separator">✦</span>
+                <span>SHOP THE COLLECTION</span> <span class="star-separator">✦</span>
+            </div>
+        </div>
 
-        <section id="shop" class="shop-section">
-            <div class="container">
-                <h2 class="section-title animate-on-scroll">Our Collection</h2>
-                <div class="product-grid" id="product-grid">
-                    <!-- Skeletons & Products Here -->
-                </div>
+        <section id="shop" class="shop-section-horizontal">
+            <div class="horizontal-intro">
+                <h2 class="section-title animate-on-scroll">Our Lookbook</h2>
+                <p class="animate-on-scroll">Drag or scroll to explore the collection.</p>
+            </div>
+            <div class="horizontal-scroll-container" id="product-container">
+                <!-- Products will be injected here -->
             </div>
         </section>
 
@@ -83,20 +97,22 @@
     </main>
 
     <footer class="site-footer-bottom">
-        <div class="container">
-            <p>© 2025 1407CLOTHING. All Rights Reserved.</p>
-        </div>
+      <div class="container">
+        <p>© 2025 1407CLOTHING. All Rights Reserved.</p>
+      </div>
     </footer>
 
-    <!-- Product Modal Structure (hidden by default) -->
     <div class="modal-overlay" id="product-modal-overlay">
         <div class="modal-content">
             <button class="modal-close" id="modal-close-btn" aria-label="Close modal">×</button>
-            <div class="modal-body" id="modal-body-content">
-                <!-- Modal content will be injected here by script.js -->
-            </div>
+            <div class="modal-body" id="modal-body-content"></div>
         </div>
     </div>
+
+    <!-- FEATURE 3: BACK TO TOP BUTTON -->
+    <a href="#home" id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
 </body>
 </html>
