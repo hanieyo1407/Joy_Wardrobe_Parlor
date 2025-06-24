@@ -1,8 +1,8 @@
-/* --- Root Variables for Easy Themeing --- */
+/*Hanieeyo1407*/
 :root {
   --bg-color: #121212;
   --surface-color: #1e1e1e;
-  --primary-color: #d4af37; /* A sophisticated gold/amber */
+  --primary-color: #d4af37; 
   --primary-hover: #e7c564;
   --text-color: #e0e0e0;
   --heading-color: #ffffff;
@@ -12,7 +12,7 @@
   --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* --- General & Reset Styles --- */
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; cursor: none; }
@@ -21,23 +21,23 @@ body.loading { overflow: hidden; } /* Prevent scroll while preloader is active *
 h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
 .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 700; }
 
-/* --- Preloader --- */
+
 .preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-color); z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
 .preloader.hidden { opacity: 0; visibility: hidden; }
 .spinner { width: 50px; height: 50px; border: 4px solid var(--surface-color); border-top-color: var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* --- Custom Cursor --- */
+
 .custom-cursor { position: fixed; top: 0; left: 0; width: 20px; height: 20px; border: 2px solid var(--primary-color); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); transition: width 0.3s ease, height 0.3s ease, border-width 0.3s ease, background-color 0.3s ease; z-index: 9999; }
 .custom-cursor.grow { width: 60px; height: 60px; border-width: 3px; background-color: rgba(212, 175, 55, 0.2); }
 
-/* --- Buttons --- */
+
 .btn { display: inline-block; padding: 12px 28px; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
 .btn-primary { background-color: var(--primary-color); color: #000; }
 .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3); }
 .magnetic-btn { transition: transform 0.3s ease; }
 
-/* --- Header --- */
+
 .site-header { background-color: rgba(30, 30, 30, 0.8); backdrop-filter: blur(10px); padding: 15px 0; position: sticky; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border-color); }
 .site-header .container { display: flex; justify-content: space-between; align-items: center; }
 .logo { font-size: 1.5rem; font-weight: 700; color: var(--heading-color); text-decoration: none; }
@@ -47,7 +47,7 @@ h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
 .main-nav a:hover, .main-nav a.active { color: var(--primary-color); }
 .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
 
-/* --- Hero Section --- */
+
 .hero-section { min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 20px; overflow: hidden; }
 .hero-video { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -2; }
 .video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(18, 18, 18, 0.7); z-index: -1; }
@@ -55,20 +55,20 @@ h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
 .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
 .hero-subtitle { font-size: 1.2rem; font-weight: 300; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
 
-/* --- About Section --- */
+
 .about-section { padding: 100px 0; background-color: var(--bg-color); }
 .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .split-layout-image img { width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: var(--shadow); }
 .split-layout-content p { font-size: 1.1rem; font-weight: 300; margin-bottom: 20px; max-width: 500px; }
 
-/* --- Marquee Section --- */
+
+
 .marquee { padding: 20px 0; background-color: var(--primary-color); color: #000; white-space: nowrap; overflow: hidden; transform: rotate(-1deg); margin: 60px 0; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
 .marquee-content { display: inline-block; padding-left: 100%; animation: marquee 25s linear infinite; font-size: 1.5rem; font-weight: 600; }
 .marquee-content span { margin: 0 40px; }
 .star-separator { color: var(--bg-color); }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-/* --- Horizontal Shop Section --- */
 .shop-section-horizontal { padding: 80px 0; width: 100%; overflow: hidden; }
 .horizontal-intro { text-align: center; padding: 0 20px; margin-bottom: 50px; }
 .horizontal-intro p { font-size: 1.1rem; color: #aaa; }
@@ -86,7 +86,7 @@ h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
 .product-info h3 { font-size: 1.1rem; margin-bottom: 8px; }
 .product-price { color: var(--primary-color); font-weight: 600; font-size: 1rem; }
 
-/* --- Product Modal --- */
+
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
 .modal-overlay.active { opacity: 1; visibility: visible; }
 .modal-content { background-color: var(--surface-color); padding: 30px; border-radius: var(--border-radius); width: 90%; max-width: 800px; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
@@ -102,23 +102,23 @@ h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
 .modal-details .product-price { font-size: 1.5rem; margin-bottom: 20px; }
 .modal-details p { margin-bottom: 30px; }
 
-/* --- Contact & Footer --- */
+
 .contact-section { background-color: var(--surface-color); padding: 80px 0; text-align: center; }
 .social-links { display: flex; justify-content: center; gap: 25px; }
 .social-links a { color: var(--text-color); font-size: 1.8rem; transition: all 0.3s ease; }
 .social-links a:hover { color: var(--primary-color); transform: translateY(-5px); }
 .site-footer-bottom { padding: 20px 0; text-align: center; font-size: 0.9rem; border-top: 1px solid var(--border-color); }
 
-/* --- Scroll Animations --- */
+
 .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 
-/* --- Back to Top Button --- */
+
 .back-to-top-btn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background-color: var(--primary-color); color: #000; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; text-decoration: none; z-index: 999; opacity: 0; visibility: hidden; transform: translateY(20px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease; }
 .back-to-top-btn.active { opacity: 1; visibility: visible; transform: translateY(0); }
 .back-to-top-btn:hover { background-color: var(--primary-hover); transform: translateY(-3px); }
 
-/* --- Media Queries for Responsiveness --- */
+
 @media (max-width: 768px) {
     .custom-cursor { display: none; }
     body { cursor: auto; }
@@ -126,3 +126,4 @@ h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
     .modal-body { grid-template-columns: 1fr; }
     .hero-title { font-size: 2.5rem; }
 }
+/*Hanieeyo1407*/

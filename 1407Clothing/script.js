@@ -1,6 +1,7 @@
+//HANIEYO1407
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- STATE & SELECTORS ---
+   
     const preloader = document.getElementById('preloader');
     const backToTopBtn = document.getElementById('back-to-top');
     const navLinks = document.querySelectorAll('.main-nav a');
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const customCursor = document.querySelector('.custom-cursor');
     const magneticBtn = document.querySelector('.magnetic-btn');
 
-    // --- PRELOADER LOGIC ---
+    
     document.body.classList.add('loading');
     window.addEventListener('load', () => {
         setTimeout(() => {
@@ -20,14 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 preloader.classList.add('hidden');
                 document.body.classList.remove('loading');
             }
-        }, 300); // Small delay to ensure smooth transition
+        }, 300); 
     });
 
-    // --- SCROLL-BASED LOGIC (NAV HIGHLIGHT & BACK TO TOP) ---
+    
     const handleScroll = () => {
         const scrollY = window.scrollY;
 
-        // Back to Top Button visibility
+        
         if (backToTopBtn) {
             if (scrollY > 300) {
                 backToTopBtn.classList.add('active');
@@ -36,11 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Active Nav Link highlighting
+        
         let currentSectionId = '';
         sections.forEach(section => {
-            if (section.id) { // Ensure the section has an ID
-                const sectionTop = section.offsetTop - 150; // Offset for better accuracy
+            if (section.id) { 
+                const sectionTop = section.offsetTop - 150; 
                 if (scrollY >= sectionTop) {
                     currentSectionId = section.getAttribute('id');
                 }
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', handleScroll);
 
-    // --- CURSOR & MAGNETIC LOGIC ---
+    
     if (window.matchMedia("(pointer: fine)").matches) {
         window.addEventListener('mousemove', e => {
             customCursor.style.top = `${e.clientY}px`;
@@ -84,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- DRAG-TO-SCROLL LOGIC ---
+    
     if (productContainer) {
         let isDown = false;
         let startX;
@@ -108,12 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - productContainer.offsetLeft;
-            const walk = (x - startX) * 2; // The *2 makes it scroll faster
+            const walk = (x - startX) * 2; 
             productContainer.scrollLeft = scrollLeft - walk;
         });
     }
 
-    // --- DATA & DISPLAY FUNCTIONS ---
+   
     async function displayProducts() {
         try {
             const response = await fetch('products.json');
@@ -144,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- MODAL & OBSERVER FUNCTIONS ---
+   
     function openModal(product) {
         modalBody.innerHTML = `
             <div class="modal-images">
@@ -196,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animatedElements.forEach(el => observer.observe(el));
     }
 
-    // --- EVENT LISTENERS ---
+   
     closeModalBtn.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', (e) => {
         if (e.target === modalOverlay) closeModal();
@@ -207,8 +208,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- INITIALIZATION ---
+    
     displayProducts();
     setupScrollObserver();
-    handleScroll(); // Run once on load to set initial state
+    handleScroll(); 
 });
+
+//HANIEYO1407
